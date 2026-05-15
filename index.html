@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Davit Chkotua — Marketing Architect & Strategist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0D0D0D;
+    --paper: #F5F2EE;
+    --warm: #E8E0D5;
+    --accent: #B5472A;
+    --accent-light: #D4603F;
+    --gold: #C9A96E;
+    --muted: #7A7268;
+    --border: rgba(13,13,13,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(245,242,238,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: padding 0.3s;
+  }
+  nav.scrolled { padding: 14px 60px; }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 300;
+    letter-spacing: 0.08em; text-decoration: none;
+    color: var(--ink);
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+  .nav-links a {
+    text-decoration: none; color: var(--muted);
+    font-size: 0.78rem; letter-spacing: 0.12em;
+    text-transform: uppercase; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    background: var(--ink) !important; color: var(--paper) !important;
+    padding: 9px 22px !important; border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--accent) !important; color: var(--paper) !important; }
+
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+  .hero-left {
+    padding: 100px 60px 80px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .hero-tag {
+    font-size: 0.72rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--accent);
+    font-weight: 500; margin-bottom: 28px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-tag::before {
+    content: ''; display: block; width: 28px;
+    height: 1px; background: var(--accent);
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 5.5vw, 5rem);
+    font-weight: 300; line-height: 1.05;
+    letter-spacing: -0.02em; margin-bottom: 12px;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 300;
+    font-style: italic; color: var(--muted);
+    margin-bottom: 36px; line-height: 1.5;
+  }
+  .hero-desc {
+    font-size: 0.95rem; line-height: 1.75;
+    color: #4A4540; max-width: 460px; margin-bottom: 48px;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: var(--paper);
+    padding: 14px 32px; border: none; border-radius: 2px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 500; cursor: pointer; text-decoration: none;
+    display: inline-block; transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent; color: var(--ink);
+    padding: 14px 32px; border: 1px solid var(--ink);
+    border-radius: 2px; font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; letter-spacing: 0.1em;
+    text-transform: uppercase; font-weight: 500; cursor: pointer;
+    text-decoration: none; display: inline-block; transition: all 0.2s;
+  }
+  .btn-outline:hover { background: var(--ink); color: var(--paper); }
+  .hero-right {
+    background: var(--ink); position: relative; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 60px;
+  }
+  .hero-right::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 30%, rgba(181,71,42,0.22) 0%, transparent 60%);
+  }
+  .hero-bg-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(8rem, 18vw, 16rem);
+    color: rgba(255,255,255,0.04); line-height: 1;
+    position: absolute; bottom: -20px; right: -10px;
+    letter-spacing: -0.02em; user-select: none;
+  }
+  .hero-photo-wrap {
+    position: relative; z-index: 2;
+    display: flex; justify-content: center;
+    margin-bottom: 40px;
+  }
+  .hero-photo {
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border: 2px solid rgba(245,242,238,0.12);
+    box-shadow:
+      0 0 0 8px rgba(181,71,42,0.08),
+      0 30px 60px -20px rgba(0,0,0,0.6);
+    position: relative;
+  }
+  .hero-photo::after {
+    content: ''; position: absolute; inset: 0;
+    border-radius: 50%;
+    box-shadow: inset 0 0 60px rgba(0,0,0,0.3);
+    pointer-events: none;
+  }
+  .hero-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: contrast(1.02) saturate(0.95);
+  }
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 32px; position: relative; z-index: 2;
+  }
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; font-weight: 300;
+    color: var(--paper); line-height: 1; margin-bottom: 6px;
+  }
+  .stat-number span { color: var(--accent); font-size: 1.9rem; }
+  .stat-label {
+    font-size: 0.72rem; color: rgba(245,242,238,0.5);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 500; line-height: 1.4;
+  }
+  .hero-quote {
+    margin-top: 48px; padding-top: 32px;
+    border-top: 1px solid rgba(245,242,238,0.12);
+    position: relative; z-index: 2;
+  }
+  .hero-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-style: italic;
+    color: rgba(245,242,238,0.7); line-height: 1.6;
+  }
+  .hero-quote cite {
+    display: block; margin-top: 10px;
+    font-size: 0.72rem; color: var(--gold);
+    letter-spacing: 0.12em; text-transform: uppercase; font-style: normal;
+  }
+
+  section { padding: 100px 60px; }
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--accent);
+    font-weight: 500; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before {
+    content: ''; display: block; width: 20px;
+    height: 1px; background: var(--accent);
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 300; line-height: 1.15; letter-spacing: -0.01em;
+  }
+  h2 em { font-style: italic; color: var(--accent); }
+
+  /* ─── HIGHLIGHTS (Why this fit) ─── */
+  #highlights { background: var(--paper); padding: 90px 60px; max-width: 1200px; margin: 0 auto; }
+  .highlight-header { margin-bottom: 50px; max-width: 720px; }
+  .highlight-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 300; line-height: 1.6;
+    color: #4A4540; margin-top: 20px;
+  }
+  .highlights-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .highlight-card {
+    background: var(--paper); padding: 32px 28px;
+    transition: background 0.2s;
+  }
+  .highlight-card:hover { background: var(--warm); }
+  .highlight-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem; color: var(--accent); line-height: 1;
+    margin-bottom: 14px; letter-spacing: 0.04em;
+  }
+  .highlight-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 600;
+    margin-bottom: 10px; line-height: 1.3;
+  }
+  .highlight-desc {
+    font-size: 0.85rem; line-height: 1.65; color: #4A4540;
+  }
+
+  /* ─── ABOUT ─── */
+  #about {
+    background: var(--warm);
+    display: grid; grid-template-columns: 1.1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+  .about-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 300;
+    line-height: 1.6; color: var(--ink); margin: 28px 0;
+  }
+  .about-body {
+    font-size: 0.93rem; line-height: 1.8;
+    color: #4A4540; margin-bottom: 22px;
+  }
+  .expertise-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border); margin-top: 0;
+  }
+  .expertise-item {
+    background: var(--warm); padding: 24px;
+    transition: background 0.2s;
+  }
+  .expertise-item:hover { background: var(--paper); }
+  .expertise-icon { font-size: 1.5rem; margin-bottom: 10px; }
+  .expertise-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; font-weight: 600; margin-bottom: 6px;
+  }
+  .expertise-desc {
+    font-size: 0.78rem; color: var(--muted); line-height: 1.5;
+  }
+
+  /* ─── EXPERIENCE ─── */
+  #experience { max-width: 1200px; margin: 0 auto; padding: 100px 60px; }
+  .exp-header {
+    display: flex; justify-content: space-between;
+    align-items: flex-end; margin-bottom: 40px;
+  }
+  .exp-filter-note {
+    font-size: 0.78rem; color: var(--muted);
+    margin-bottom: 30px; max-width: 720px; line-height: 1.6;
+  }
+  .exp-filter-note .pin {
+    display: inline-block; width: 10px; height: 10px;
+    background: var(--accent); border-radius: 50%;
+    vertical-align: middle; margin-right: 6px;
+  }
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 40px; padding: 32px 0;
+    border-top: 1px solid var(--border);
+    transition: background 0.2s; cursor: default;
+  }
+  .exp-item:last-child { border-bottom: 1px solid var(--border); }
+  .exp-item.pinned {
+    background: linear-gradient(90deg, rgba(181,71,42,0.04) 0%, transparent 80%);
+    padding-left: 16px;
+    border-left: 2px solid var(--accent);
+  }
+  .exp-period {
+    font-size: 0.72rem; color: var(--muted);
+    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px;
+  }
+  .exp-company {
+    font-size: 0.85rem; color: var(--accent); font-weight: 500;
+  }
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem; font-weight: 600;
+    margin-bottom: 10px; transition: color 0.2s;
+  }
+  .exp-item:hover .exp-role { color: var(--accent); }
+  .exp-desc {
+    font-size: 0.86rem; line-height: 1.7; color: #4A4540;
+  }
+  .exp-tags {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px;
+  }
+  .tag {
+    font-size: 0.68rem; padding: 4px 10px;
+    border: 1px solid var(--border); border-radius: 1px;
+    color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .tag.accent {
+    border-color: var(--accent); color: var(--accent);
+  }
+
+  /* ─── CLIENTS ─── */
+  #clients { text-align: center; padding: 80px 60px; background: var(--warm); }
+  .clients-label {
+    font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 40px;
+  }
+  .clients-scroll {
+    display: flex; flex-wrap: wrap;
+    justify-content: center; gap: 12px 28px;
+  }
+  .client-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; color: var(--muted);
+    font-style: italic; transition: color 0.2s; cursor: default;
+  }
+  .client-name:hover { color: var(--ink); }
+
+  /* ─── EDUCATION ─── */
+  #education { max-width: 1200px; margin: 0 auto; padding: 100px 60px; }
+  .edu-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 24px; margin-top: 50px;
+  }
+  .edu-card {
+    padding: 28px; border: 1px solid var(--border);
+    border-radius: 2px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .edu-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .edu-type {
+    font-size: 0.68rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 10px; font-weight: 500;
+  }
+  .edu-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 600; margin-bottom: 6px;
+  }
+  .edu-school { font-size: 0.83rem; color: var(--muted); }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    background: var(--ink); color: var(--paper);
+    padding: 120px 60px;
+    display: flex; justify-content: center; align-items: center;
+    min-height: 480px;
+    position: relative;
+    overflow: hidden;
+  }
+  #contact::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(181,71,42,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .contact-center {
+    max-width: 640px; width: 100%;
+    text-align: center;
+    display: flex; flex-direction: column; align-items: center;
+    position: relative; z-index: 2;
+  }
+  .contact-center .section-label { color: var(--gold); justify-content: center; }
+  .contact-center .section-label::before { background: var(--gold); }
+  .contact-center h2 { color: var(--paper); margin-bottom: 20px; }
+  .contact-center h2 em { color: var(--accent-light); }
+  .contact-center p {
+    font-size: 0.95rem; line-height: 1.7;
+    color: rgba(245,242,238,0.65);
+    margin-bottom: 40px; max-width: 520px;
+  }
+  .contact-links {
+    display: flex; flex-wrap: wrap;
+    justify-content: center; gap: 14px 22px;
+  }
+  .contact-link {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none; color: rgba(245,242,238,0.75);
+    font-size: 0.9rem; transition: color 0.2s;
+  }
+  .contact-link:hover { color: var(--paper); }
+  .contact-link .icon {
+    width: 38px; height: 38px;
+    border: 1px solid rgba(245,242,238,0.2);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.95rem; transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-link:hover .icon { border-color: var(--accent); background: rgba(181,71,42,0.15); }
+
+  footer {
+    background: #050505; padding: 28px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; color: rgba(245,242,238,0.4);
+  }
+  .footer-copy {
+    font-size: 0.72rem; color: rgba(245,242,238,0.25); letter-spacing: 0.06em;
+  }
+
+  .fade-up {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    #hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 100px 24px 60px; }
+    .hero-right { padding: 60px 24px; min-height: 360px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    #about { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+    #experience { padding: 60px 24px; }
+    .exp-item { grid-template-columns: 1fr; gap: 8px; }
+    section { padding: 60px 24px; }
+    #highlights { padding: 60px 24px; }
+    .highlights-grid { grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    #contact { padding: 60px 24px; }
+    .hero-photo { width: 200px; height: 200px; }
+    .hero-photo-wrap { margin-bottom: 30px; }
+    footer { flex-direction: column; gap: 8px; padding: 20px 24px; text-align: center; }
+  }
+
+  .toast {
+    position: fixed; bottom: 30px; right: 30px;
+    background: var(--ink); color: var(--paper);
+    padding: 14px 22px; border-radius: 2px;
+    font-size: 0.83rem; border-left: 3px solid var(--accent);
+    z-index: 9998; transform: translateX(120%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .toast.show { transform: translateX(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Davit <span>Chkotua</span></a>
+  <ul class="nav-links">
+    <li><a href="#highlights">Why Me</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Head of Marketing & Sales — Candidate</div>
+    <h1>Great marketing<br>doesn't just happen —<br>it's <em>architected.</em></h1>
+    <p class="hero-subtitle">Systems, teams, and revenue — built from zero, end-to-end.</p>
+    <p class="hero-desc">14+ years building marketing & sales engines for 60+ businesses across real estate, retail, education, and creative industries. I don't run campaigns — I build the departments, processes, and KPIs that make growth repeatable.</p>
+    <div class="hero-actions">
+      <a href="#experience" class="btn-primary">View Full Experience</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-bg-text">MAS</div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo">
+        <img src="davit-photo.jpg" alt="Davit Chkotua">
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">14<span>+</span></div>
+        <div class="stat-label">Years in<br>Marketing</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">60<span>+</span></div>
+        <div class="stat-label">Businesses<br>Served</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">4<span>+</span></div>
+        <div class="stat-label">Departments<br>Built from 0</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">$3M<span>+</span></div>
+        <div class="stat-label">Campaigns<br>Managed</div>
+      </div>
+    </div>
+    <div class="hero-quote">
+      <p>"Diagnosis before prescription — that's what separates marketing architects from marketing executors."</p>
+      <cite>— Davit Chkotua</cite>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS / Why this fit -->
+<section id="highlights">
+  <div class="highlight-header fade-up">
+    <div class="section-label">Relevant for This Role</div>
+    <h2>Why I Fit a <em>Construction & Real Estate</em><br>Head of Marketing & Sales</h2>
+    <p class="highlight-intro">A focused look at the experience most relevant to building a marketing & sales department from scratch inside a construction company.</p>
+  </div>
+  <div class="highlights-grid">
+    <div class="highlight-card fade-up">
+      <div class="highlight-num">01</div>
+      <div class="highlight-title">Real Estate & Construction Track Record</div>
+      <p class="highlight-desc">Direct experience with real-estate developers and adjacent industries — X2 Development, Alta Home, Tbilisi Mall, BETLEMI 10 Holding (museums, planetarium, advertising agency). I understand long sales cycles, high-ticket buyers, and brand-driven trust.</p>
+    </div>
+    <div class="highlight-card fade-up">
+      <div class="highlight-num">02</div>
+      <div class="highlight-title">Built Departments From Zero</div>
+      <p class="highlight-desc">At Meama I built the entire marketing team from the ground up and connected it to sales via an automated PM system. At Skillwill I led B2B growth from brand manager to CBDO — 40+ partners added, B2B sales lifted to 43% of total.</p>
+    </div>
+    <div class="highlight-card fade-up">
+      <div class="highlight-num">03</div>
+      <div class="highlight-title">Marketing × Sales Sync</div>
+      <p class="highlight-desc">My core methodology is the handoff between marketing, sales, and ops — KPIs, dashboards, roles, and processes. The same gap construction companies struggle with: leads come in, but the sales team can't close, or marketing can't measure what's working.</p>
+    </div>
+    <div class="highlight-card fade-up">
+      <div class="highlight-num">04</div>
+      <div class="highlight-title">Team Recruitment & Training</div>
+      <p class="highlight-desc">Recruited and structured teams at Meama, BETLEMI 10, Skillwill, and McCann. Taught 4,000+ marketing students at BTU and SEU — I know how to identify, hire, and develop marketing talent in the Georgian market.</p>
+    </div>
+    <div class="highlight-card fade-up">
+      <div class="highlight-num">05</div>
+      <div class="highlight-title">Senior Leadership Experience</div>
+      <p class="highlight-desc">CEO of BETLEMI 10 Holding, Head of Marketing at Meama, CBDO at Skillwill, Head of Digital at McCann, Head of Strategic Comms at Ministry of Internal Affairs. I've sat in the leadership seat across private, agency, and government.</p>
+    </div>
+    <div class="highlight-card fade-up">
+      <div class="highlight-num">06</div>
+      <div class="highlight-title">Measurable Outcomes</div>
+      <p class="highlight-desc">12% sales increase at IBEL Academy. 12.5% reduction in road accident fatalities at MIA. 98% satisfaction across courses. $3M+ in managed campaigns. I lead with metrics, not narratives.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left fade-up">
+    <div class="section-label">Who I Am</div>
+    <h2>Strategist. Leader.<br><em>Architect.</em></h2>
+    <p class="about-intro">I turn marketing from "activity" into a revenue system — built on diagnosis, designed for measurable growth.</p>
+    <p class="about-body">Over 14 years across agency, in-house leadership, academic, and government environments, I've developed one clear conviction: most marketing fails not because of bad execution, but because of missing architecture. Wrong positioning, broken sales handoff, untracked KPIs, no system.</p>
+    <p class="about-body">I operate under a proprietary 3D OS methodology — Diagnose, Design, Drive. I've helped businesses in real estate, retail, beauty, education, and creative industries bring order to scattered marketing and turn it into consistent execution.</p>
+    <p class="about-body">Beyond consulting, I teach at Business and Technology University (BTU) and Georgian National University SEU, where I've shaped 4,000+ marketing students. I write for Entrepreneur Georgia and founded Marketing Architect Studio (MAS).</p>
+    <a href="#contact" class="btn-primary" style="margin-top:8px; display:inline-block;">Let's Talk Strategy</a>
+  </div>
+  <div class="about-right fade-up">
+    <div class="expertise-grid">
+      <div class="expertise-item">
+        <div class="expertise-icon">👥</div>
+        <div class="expertise-title">Team Building from 0</div>
+        <div class="expertise-desc">Hiring, structuring, and training marketing & sales teams</div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-icon">🏗️</div>
+        <div class="expertise-title">System Architecture</div>
+        <div class="expertise-desc">Processes, roles, KPIs, dashboards — not just campaigns</div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-icon">🔄</div>
+        <div class="expertise-title">Marketing × Sales Sync</div>
+        <div class="expertise-desc">Closing the handoff gap that kills most pipelines</div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-icon">🤖</div>
+        <div class="expertise-title">Automation</div>
+        <div class="expertise-desc">PM tools, data flows, scalable revenue operations</div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-icon">📡</div>
+        <div class="expertise-title">Omni-Channel Strategy</div>
+        <div class="expertise-desc">Digital, traditional, PR, experiential — coherent presence</div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-icon">🎓</div>
+        <div class="expertise-title">Leadership & Training</div>
+        <div class="expertise-desc">4,000+ students taught, multiple teams led</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<div id="experience">
+  <div class="exp-header fade-up">
+    <div>
+      <div class="section-label">Career Timeline</div>
+      <h2>14+ Years. 60+ <em>Businesses.</em></h2>
+    </div>
+  </div>
+  <p class="exp-filter-note fade-up"><span class="pin"></span> Highlighted roles are most relevant to building a marketing & sales department in a construction / real estate company.</p>
+
+  <div class="timeline">
+
+    <div class="exp-item pinned fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">Nov 2023 — Present</div>
+        <div class="exp-company">Marketing Architect Studio</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Founder · Marketing Architect & Strategist</div>
+        <p class="exp-desc">Help founders and CEOs turn marketing from "activity" into a revenue system. Build marketing + sales systems (processes, roles, KPIs, dashboards), run strategic sync sessions, train internal teams, and coordinate agencies/freelancers. Direct work with real estate, education, retail, beauty, and creative-industry businesses.</p>
+        <div class="exp-tags">
+          <span class="tag accent">Real Estate</span><span class="tag accent">Dept Building</span><span class="tag accent">Sales Sync</span><span class="tag">Consulting</span><span class="tag">Automation</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">Apr 2025 — Present</div>
+        <div class="exp-company">Entrepreneur Georgia</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Author</div>
+        <p class="exp-desc">Writing insight-driven articles on marketing strategy, system architecture, and business growth for Georgian business leaders. A thought-leadership platform that translates 14+ years of practice into accessible frameworks.</p>
+        <div class="exp-tags">
+          <span class="tag">Thought Leadership</span><span class="tag">Publication</span><span class="tag">Strategy</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">Mar 2021 — Present</div>
+        <div class="exp-company">BTU · Business and Technology University</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Associate Professor</div>
+        <p class="exp-desc">Deliver courses in Marketing Strategy and Direct Marketing in the Business Administration Program. Shaping the next generation of Georgian marketers.</p>
+        <div class="exp-tags">
+          <span class="tag">Marketing Strategy</span><span class="tag">Direct Marketing</span><span class="tag">Academia</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">Mar 2017 — Feb 2026</div>
+        <div class="exp-company">Georgian National University SEU</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Assistant Professor · Invited Lecturer</div>
+        <p class="exp-desc">9 years delivering courses in Event Management, Marketing, Soft Skills in Practice, and my own course on Communications Management in the Public Sector. Business Administration Program.</p>
+        <div class="exp-tags">
+          <span class="tag">Marketing</span><span class="tag">Event Management</span><span class="tag">Public Sector Comms</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item pinned fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">Jul — Oct 2023</div>
+        <div class="exp-company">Meama</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Head of Marketing</div>
+        <p class="exp-desc">Built and assembled the marketing team from the ground up. Developed an automated system using project management tools to connect marketing and sales departments. Laid the groundwork for loyalty system, e-commerce, subscription services, and affiliate marketing — across Meama and its subsidiary brands.</p>
+        <div class="exp-tags">
+          <span class="tag accent">Dept Built from 0</span><span class="tag accent">Marketing × Sales</span><span class="tag">Automation</span><span class="tag">Loyalty</span><span class="tag">E-commerce</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item pinned fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">Aug 2022 — Jul 2023</div>
+        <div class="exp-company">Skillwill</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Chief Business Development Officer · (formerly Brand Manager)</div>
+        <p class="exp-desc">Promoted from Brand Manager to CBDO. Added 40+ business partners within two months, increased B2B sales to 43% of total revenue, and developed a new product line for business clients. Built the B2B sales motion from scratch.</p>
+        <div class="exp-tags">
+          <span class="tag accent">B2B Sales 0→43%</span><span class="tag accent">Partnership Building</span><span class="tag">Product Dev</span><span class="tag">Brand</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item pinned fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">Mar — Aug 2022</div>
+        <div class="exp-company">McCann Tbilisi</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Head of Digital</div>
+        <p class="exp-desc">Created an independent in-house digital agency inside McCann. Client relations, proposal prep, strategic & media planning, concept development, and reporting for Mastercard, BEKO, Borusan CAT, Lenovo, KIKO Milano, Tbilisi Mall, and Alta Home (real-estate retail).</p>
+        <div class="exp-tags">
+          <span class="tag accent">Real Estate Clients</span><span class="tag">Digital Strategy</span><span class="tag">Media Planning</span><span class="tag">Agency Leadership</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item pinned fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">Jul — Nov 2021</div>
+        <div class="exp-company">BETLEMI 10 Holding</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Chief Executive Officer</div>
+        <p class="exp-desc">CEO of a holding spanning Museum of Illusions, Holoseum (audiovisual museum), Mtatsminda Planetarium, and B10 Advertising Agency. Managed holding-wide resources, P&L, recruitment, and shareholder relations. As CEO of B10, led campaigns for Elite Electronics, Borjomi, Liberty Bank, US Embassy, and the National Museum.</p>
+        <div class="exp-tags">
+          <span class="tag accent">CEO / P&L</span><span class="tag accent">Multi-Business Ops</span><span class="tag">Recruitment</span><span class="tag">Creative Direction</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">Apr — Jul 2021</div>
+        <div class="exp-company">Podcasthub.ge</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Podcaster / Producer · "I Did It"</div>
+        <p class="exp-desc">Hosted a motivational podcast featuring Georgian celebrities, inspired by a Facebook group I founded (21,000+ members). Production team included my own students.</p>
+        <div class="exp-tags">
+          <span class="tag">Content Production</span><span class="tag">Community Building</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">Jan 2020 — Jan 2022</div>
+        <div class="exp-company">European University</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Invited Lecturer</div>
+        <p class="exp-desc">Delivered a course on Social Media and Strategic Communications.</p>
+        <div class="exp-tags">
+          <span class="tag">Social Media</span><span class="tag">Strategic Comms</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">Jan 2019 — Feb 2021</div>
+        <div class="exp-company">Kant's Academy</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Speaker</div>
+        <p class="exp-desc">Delivered courses on event management, PR basics, marketing basics, and public speaking.</p>
+      </div>
+    </div>
+
+    <div class="exp-item pinned fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">Mar — Sep 2020</div>
+        <div class="exp-company">IBEL Academy</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Director of Communications</div>
+        <p class="exp-desc">Executed a brand refresh across all customer touchpoints, developed marketing strategy and action plan, secured major media coverage including a talk-show collaboration with Radio. Result: 12% increase in sales.</p>
+        <div class="exp-tags">
+          <span class="tag accent">+12% Sales</span><span class="tag">Brand Refresh</span><span class="tag">Strategy</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">Apr — Jul 2020</div>
+        <div class="exp-company">Alterbridge</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Invited Lecturer · Master's Program</div>
+        <p class="exp-desc">Course on Social Media and Crisis Communications.</p>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">Sep 2017 — Mar 2020</div>
+        <div class="exp-company">Ministry of Internal Affairs of Georgia</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Head of Strategic Communications Division</div>
+        <p class="exp-desc">Led internal & external communications strategy for the entire Ministry and the Community Policing Strategy / Action Plan. Built the Strategic Communications Department from a legacy PR Department through structural and legislative reform. The Road Safety campaign — using content, guerrilla, influencer, TV, digital, and outdoor — produced a 12.5% decrease in car accident fatalities and 9.5% drop in extreme accidents.</p>
+        <div class="exp-tags">
+          <span class="tag accent">Dept Built from 0</span><span class="tag accent">-12.5% Fatalities</span><span class="tag">Omnichannel</span><span class="tag">Senior Leadership</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">Jun 2015 — Sep 2017</div>
+        <div class="exp-company">Ministry of Environment Protection</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Assistant to the Minister</div>
+        <p class="exp-desc">Created initiatives with the economic team, developed communication strategy with PR, managed project planning and local-government engagement. Founded "Green Volunteers," a youth-led environmental NGO.</p>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">Feb 2013 — Jun 2015</div>
+        <div class="exp-company">Caucasus Youth Nexus</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Co-Founder · Head of Communications</div>
+        <p class="exp-desc">Co-founded an NGO enhancing education accessibility for youth in rural Georgia. Built the communications strategy, strengthened internal comms, secured first fundraising rounds.</p>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">2013 — 2015</div>
+        <div class="exp-company">Funday Entertainment</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Co-Founder · Head of Communications & Project Management</div>
+        <p class="exp-desc">Founded an event-management company (still active) organizing musical events and team-building activities, with a side practice in artist management. Served as PR Manager for the music band "Loudspeakers" during their peak.</p>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">Jul 2012 — Jan 2014</div>
+        <div class="exp-company">LTD RMG Gold</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Adviser to the CEO</div>
+        <p class="exp-desc">PR and youth-politics adviser. Built engagement projects with local youth and led the company's image and reputation strategy.</p>
+      </div>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-meta">
+        <div class="exp-period">2010</div>
+        <div class="exp-company">The Student's Leader (Newspaper)</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Journalist</div>
+        <p class="exp-desc">Where it all started — writing for a student newspaper in Tbilisi.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <div class="clients-label">Brands & Organizations I've Worked With</div>
+  <div class="clients-scroll">
+    <span class="client-name">X2 Development</span><span class="client-name">·</span>
+    <span class="client-name">Alta Home</span><span class="client-name">·</span>
+    <span class="client-name">Tbilisi Mall</span><span class="client-name">·</span>
+    <span class="client-name">Mastercard</span><span class="client-name">·</span>
+    <span class="client-name">Meama</span><span class="client-name">·</span>
+    <span class="client-name">Borjomi</span><span class="client-name">·</span>
+    <span class="client-name">Liberty Bank</span><span class="client-name">·</span>
+    <span class="client-name">US Embassy</span><span class="client-name">·</span>
+    <span class="client-name">BEKO</span><span class="client-name">·</span>
+    <span class="client-name">Lenovo</span><span class="client-name">·</span>
+    <span class="client-name">KIKO Milano</span><span class="client-name">·</span>
+    <span class="client-name">Borusan CAT</span><span class="client-name">·</span>
+    <span class="client-name">Baldinini</span><span class="client-name">·</span>
+    <span class="client-name">National Museum</span><span class="client-name">·</span>
+    <span class="client-name">Elite Electronics</span><span class="client-name">·</span>
+    <span class="client-name">EuroTech</span><span class="client-name">·</span>
+    <span class="client-name">Ministry of Internal Affairs</span><span class="client-name">·</span>
+    <span class="client-name">Ministry of Environment</span>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<div id="education">
+  <div class="fade-up">
+    <div class="section-label">Academic Background</div>
+    <h2>Education &amp; <em>Credentials</em></h2>
+  </div>
+  <div class="edu-grid">
+    <div class="edu-card fade-up">
+      <div class="edu-type">Master's Degree</div>
+      <div class="edu-degree">Public Relations</div>
+      <div class="edu-school">Georgian Institute of Public Affairs (GIPA) · 2014–2016</div>
+    </div>
+    <div class="edu-card fade-up">
+      <div class="edu-type">Bachelor's Degree</div>
+      <div class="edu-degree">Bachelor of Laws</div>
+      <div class="edu-school">Ivane Javakhishvili Tbilisi State University · 2009–2014</div>
+    </div>
+    <div class="edu-card fade-up">
+      <div class="edu-type">NATO Certification</div>
+      <div class="edu-degree">M5-46 Public Affairs Policy Indoctrination</div>
+      <div class="edu-school">NATO · Strategic Communications</div>
+    </div>
+    <div class="edu-card fade-up">
+      <div class="edu-type">NATO Certification</div>
+      <div class="edu-degree">S5-44 Public Affairs in Operations</div>
+      <div class="edu-school">NATO · Strategic Communications</div>
+    </div>
+    <div class="edu-card fade-up">
+      <div class="edu-type">Certificate</div>
+      <div class="edu-degree">Fundamentals of Digital Marketing</div>
+      <div class="edu-school">Google Digital Garage</div>
+    </div>
+    <div class="edu-card fade-up">
+      <div class="edu-type">Publication</div>
+      <div class="edu-degree">Pandemic Marketing Challenges &amp; Changes</div>
+      <div class="edu-school">Case of Georgia · 2020</div>
+    </div>
+    <div class="edu-card fade-up">
+      <div class="edu-type">Languages</div>
+      <div class="edu-degree">Georgian · English · Russian</div>
+      <div class="edu-school">Native · Full Professional · Full Professional</div>
+    </div>
+    <div class="edu-card fade-up">
+      <div class="edu-type">Ongoing Publication</div>
+      <div class="edu-degree">Author at Entrepreneur Georgia</div>
+      <div class="edu-school">2025 — Present</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-center fade-up">
+    <div class="section-label">Get In Touch</div>
+    <h2>Ready to <em>Build</em> Your Department?</h2>
+    <p>Whether you're hiring a Head of Marketing & Sales to build from zero, or a CEO who needs a senior strategist — I'm direct, fast, and focused on what moves revenue.</p>
+    <div class="contact-links">
+      <a href="tel:+995577333535" class="contact-link">
+        <span class="icon">📞</span>
+        +995 577 33 35 35
+      </a>
+      <a href="mailto:davitchkotua@gmail.com" class="contact-link">
+        <span class="icon">✉️</span>
+        davitchkotua@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/davitchkotua/" target="_blank" class="contact-link">
+        <span class="icon">in</span>
+        linkedin.com/in/davitchkotua
+      </a>
+      <a href="https://davitchkotua.com" target="_blank" class="contact-link">
+        <span class="icon">🌐</span>
+        davitchkotua.com
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Davit Chkotua · Marketing Architect</div>
+  <div class="footer-copy">© 2026 · Tbilisi, Georgia · davitchkotua.com</div>
+</footer>
+
+<div class="toast" id="toast">✓ Message sent! I'll get back to you shortly.</div>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  const form = document.getElementById('contactForm');
+  const toast = document.getElementById('toast');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    toast.classList.add('show');
+    form.reset();
+    setTimeout(() => toast.classList.remove('show'), 4000);
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
